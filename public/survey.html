@@ -4,12 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile Survey</title>
+    <title>Gamer Profilef Survey</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="container">
+            <form>
+                    <div class="form-group">
+                        <label for="gamerName">Name (required)</label>
+                        <input type="text" class="form-control" id="gamerName" aria-describedby="gamerName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                            <label for="gamerPic">Image URL (required)</label>
+                            <input type="text" class="form-control" id="gamerPic" aria-describedby="gamerPic" placeholder="Enter the image URL" required>
+                        </div>
+                <div class="form-group">
+                    <h3>Question 1</h3>
+                    <h4>How many people to you generally like to play with?</h4>
+                    <select class="custom-select" id="question1">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five +</option>
+                    </select>
+                    <h3>Question 2</h3>
+                    <h4>How do you feel about Euro Games?</h4>
+                    <h5>Scale of 1 - 5</h5>
+                    <select class="custom-select" id="question1">
+                        <option selected>Choose...</option>
+                        <option value="1">1. Wooden buildings over minis? Count me out!</option>
+                        <option value="2">2. I'll play a light Euro with some player interaction</option>
+                        <option value="3">3. I'll throw down a mid-weight Euro</option>
+                        <option value="4">4. I like my Euros like I like my board game boxes... hard and heavy </option>
+                        <option value="5">5. There's not enough wood in the black forest so satiate my love for Euros!</option>
+                    </select>
+                    <h3>Question 3</h3>
+                    <h4>How do you feel about Ameritrash Games?</h4>
+                    <h5>Scale of 1 - 5</h5>
+                    <select class="custom-select" id="question1">
+                        <option selected>Choose...</option>
+                        <option value="1">1. Chuck the game out with the dice!</option>
+                        <option value="2">2. I'll play if there's not too much randomness.</option>
+                        <option value="3">3. A good balance of theme and luck!</option>
+                        <option value="4">4. Give me dice or give me death!</option>
+                        <option value="5">5. Two words... YOLO</option>
+                    </select>
+                    <h3>Question 4</h3>
+                    <h4>How do you feel about cooperative games?</h4>
+                    <h5>Scale of 1 - 5</h5>
+                    <select class="custom-select" id="question1">
+                        <option selected>Choose...</option>
+                        <option value="1">1. I live for the thrill of crusing my opponents dreams!</option>
+                        <option value="2">2. I'll play if there's a traitor... and I'm the traitor</option>
+                        <option value="3">3. I like them as much as competitive games.</option>
+                        <option value="4">4. I prefer harmony over competition</option>
+                        <option value="5">5. I only play cooperative games!</option>
+                    </select>
+                    <h3>Question 5x</h3>
+                    <h4>How do you feel about competitive games?</h4>
+                    <h5>Scale of 1 - 5</h5>
+                    <select class="custom-select" id="question1">
+                        <option selected>Choose...</option>
+                        <option value="1">1. Why can't we be friends?</option>
+                        <option value="2">2. I'll play them if there's a team element</option>
+                        <option value="3">3. I like them as much as cooperative games</option>
+                        <option value="4">4. I will break you! Most of the time.</option>
+                        <option value="5">5. We're implementing a tournament bracket right?</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary my-1">Submit</button>
+            </form>
+    </div>
 </body>
 </html>
