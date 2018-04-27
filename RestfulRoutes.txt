@@ -1,0 +1,37 @@
+REST
+Represntational State Transfer
+
+A mapping between HTTP and CRUD
+
+CRUD
+CREATE
+READ
+UPDATE
+
+DESTROY
+7 Restful Routes
+
+
+NAME	URL				Verb		Mongoose Method			Description:
+==========================================================================================
+INDEX	/dogs			GET 		Dog.find()				Display a list of all dog
+NEW		/dogs/new		GET			N/A						Displays form to make a new dog
+CREATE	/dogs			POST		Dog.create()			Add new dog to DB
+SHOW	/dogs/:id		GET			Dog.findById()			Shows info about 1 dog
+EDIT	/dogs/:id/edit	GET			Dog.findById()			Show edit form for 1 dog
+UPDATE	/dogs/:id		PUT			Dog.findByIdAndUpdate()	Update a particular dog and then redirect
+DESTROY	/dogs:id		DELETE		Dog.findByIdAndRemove()	Delete a particular dog
+
+
+
+Up to this point you have used the name attribute like so:
+
+<input type="text" name="title"> 
+
+Now Colt will write it like this:
+
+<input type="text" name="blog[title]"> 
+
+What this will do is, instead of making the value for title available 
+directly from req.body.title it will put it inside of an object, like 
+so: req.body.blog.title 
