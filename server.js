@@ -13,8 +13,9 @@ app.use(body.json());
 
 
 //routes
-require('./routing/htmlRoutes')(app);
 require('./routing/apiRoutes')(app);
+require('./routing/htmlRoutes')(app);
+
 
 //Listener 
 app.listen(PORT, ()=>{

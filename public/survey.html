@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div class="container">
@@ -34,7 +35,7 @@
                     <h3>Question 2</h3>
                     <h4>How do you feel about Euro Games?</h4>
                     <h5>Scale of 1 - 5</h5>
-                    <select class="custom-select" id="question1">
+                    <select class="custom-select" id="question2">
                         <option selected>Choose...</option>
                         <option value="1">1. Wooden buildings over minis? Count me out!</option>
                         <option value="2">2. I'll play a light Euro with some player interaction</option>
@@ -45,7 +46,7 @@
                     <h3>Question 3</h3>
                     <h4>How do you feel about Ameritrash Games?</h4>
                     <h5>Scale of 1 - 5</h5>
-                    <select class="custom-select" id="question1">
+                    <select class="custom-select" id="question3">
                         <option selected>Choose...</option>
                         <option value="1">1. Chuck the game out with the dice!</option>
                         <option value="2">2. I'll play if there's not too much randomness.</option>
@@ -56,7 +57,7 @@
                     <h3>Question 4</h3>
                     <h4>How do you feel about cooperative games?</h4>
                     <h5>Scale of 1 - 5</h5>
-                    <select class="custom-select" id="question1">
+                    <select class="custom-select" id="question4">
                         <option selected>Choose...</option>
                         <option value="1">1. I live for the thrill of crusing my opponents dreams!</option>
                         <option value="2">2. I'll play if there's a traitor... and I'm the traitor</option>
@@ -67,7 +68,7 @@
                     <h3>Question 5x</h3>
                     <h4>How do you feel about competitive games?</h4>
                     <h5>Scale of 1 - 5</h5>
-                    <select class="custom-select" id="question1">
+                    <select class="custom-select" id="question5">
                         <option selected>Choose...</option>
                         <option value="1">1. Why can't we be friends?</option>
                         <option value="2">2. I'll play them if there's a team element</option>
@@ -77,8 +78,30 @@
                     </select>
                 </div>
                 
-                <button type="submit" class="btn btn-primary my-1">Submit</button>
+                <button id= "sub" type="submit" class="btn btn-primary my-1">Submit</button>
             </form>
     </div>
+
+    <script>
+    
+    $('#sub').on('click',(event) =>{
+    event.preventDefault();
+    
+    let gamerObject = {
+        gamerName: $('#gamerName').val().trim(),
+        photoURL:$('#gamerPic').val().trim(),
+        scores:[$('#question1').val(),$('#question2').val(),$('#question3').val(),$('#question4').val(),$('#question5').val(),]
+    };
+console.log(gamerObject);
+    $.post('/api/friends', gamerObject,(data)=>{
+        console.log(data);
+        console.log("Gamer Added. Put Match Logic Here");
+     
+    });
+
+       $('#gamerName').val("");
+        $('#gamerPic').val("");
+});
+    </script>
 </body>
 </html>
