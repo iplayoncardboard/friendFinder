@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gamer Profilef Survey</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -65,7 +65,7 @@
                         <option value="4">4. I prefer harmony over competition</option>
                         <option value="5">5. I only play cooperative games!</option>
                     </select>
-                    <h3>Question 5x</h3>
+                    <h3>Question 5</h3>
                     <h4>How do you feel about competitive games?</h4>
                     <h5>Scale of 1 - 5</h5>
                     <select class="custom-select" id="question5">
@@ -92,15 +92,42 @@
         photoURL:$('#gamerPic').val().trim(),
         scores:[$('#question1').val(),$('#question2').val(),$('#question3').val(),$('#question4').val(),$('#question5').val(),]
     };
-console.log(gamerObject);
+    $.get('/api/friends', (currentGamers)=>{
+            console.log(currentGamers);
+            let bestScore = 0;
+            let scoreDif = 0;
+            for(let i=0; i< currentGamers.length; i++){
+                //convenience variable    
+                let currentScores = currentGamers[i].scores;
+
+                for(let j=0; j< currentScores.length; j++){
+
+                    let myScore = gamerObject.scores[j]
+                    let theirScore = currentScores[j]
+                    scoreDif += Math.abs(myScore-theirScore);
+                }
+                console.log('BEst '+ bestScore);
+                console.log('Diff '+ scoreDif);
+                if(i===0){
+                    bestScore = scoreDif
+                    console.log('NEW BEST '+ bestScore);
+                }
+                else if(scoreDif < bestScore){
+                    bestScore = scoreDif;
+                }
+            }
+            
+        });
     $.post('/api/friends', gamerObject,(data)=>{
         console.log(data);
         console.log("Gamer Added. Put Match Logic Here");
-     
+      
+    
     });
 
-       $('#gamerName').val("");
-        $('#gamerPic').val("");
+    //    $('#gamerName').val("");
+    //     $('#gamerPic').val("");
+    //     $('#question1').val(selected)
 });
     </script>
 </body>
