@@ -82,6 +82,27 @@
             </form>
     </div>
 
+    <!-- Modal -->
+
+    <div id='myModal' class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
     
     $('#sub').on('click',(event) =>{
@@ -95,11 +116,12 @@
     $.get('/api/friends', (currentGamers)=>{
             console.log(currentGamers);
             let bestScore = 0;
-            let scoreDif = 0;
+            
+            let bestMatch = {};
             for(let i=0; i< currentGamers.length; i++){
                 //convenience variable    
                 let currentScores = currentGamers[i].scores;
-
+                let scoreDif = 0;
                 for(let j=0; j< currentScores.length; j++){
 
                     let myScore = gamerObject.scores[j]
@@ -111,23 +133,24 @@
                 if(i===0){
                     bestScore = scoreDif
                     console.log('NEW BEST '+ bestScore);
+                    bestMatch = currentGamers[i];
+                    console.log(bestMatch);
                 }
                 else if(scoreDif < bestScore){
                     bestScore = scoreDif;
+                    bestMatch = currentGamers[i];
+                    console.log(bestMatch);
                 }
             }
-            
-        });
-    $.post('/api/friends', gamerObject,(data)=>{
-        console.log(data);
-        console.log("Gamer Added. Put Match Logic Here");
-      
-    
+            $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+            $.post('/api/friends', gamerObject,(data)=>{
+                
     });
+        });
+  
 
-    //    $('#gamerName').val("");
-    //     $('#gamerPic').val("");
-    //     $('#question1').val(selected)
 });
     </script>
 </body>
