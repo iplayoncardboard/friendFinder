@@ -3,7 +3,7 @@
 let gamerArray = [
     {
         gamerName:'Erik',
-        photoURL:'',
+        photoURL:'https://vignette.wikia.nocookie.net/rifts/images/b/b9/Savage_Rifts_GlitterBoy.jpg/revision/latest?cb=20160510131430',
         scores:[5,5,5,5,5,]
     }
 ];
